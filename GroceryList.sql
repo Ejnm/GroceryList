@@ -243,3 +243,28 @@ INSERT INTO Store (
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+
+
+SELECT*
+FROM Store;
+
+--display the database ordered by price. 
+SELECT * FROM store
+ORDER BY price desc; 
+
+--what is the avg price of items in theproduce section? 
+SELECT AVG(price) "avg produce item price"
+FROM store
+where section='produce'; 
+
+--what are the most 5 popular items? 
+SELECT item, price, popularity
+FROM store
+order by popularity desc
+limit 5; 
+
+--which is the mosth cheap product?
+SELECT item, price
+FROM store
+WHERE price =
+(SELECT MIN(price) FROM store);
